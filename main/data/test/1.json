@@ -1,0 +1,28 @@
+{
+        "Name":"Nibbles",
+        "Gender":"Female",
+        "species":"Nibbles",
+
+
+        
+        "move1":"Tackle", "move1_power":35, "move1_pp":35, "move1_damaging":"yes",
+        "move2":"Growl", "move2_power":0, "move2_pp":40, "move2_damaging":"no",
+        "move3":"Mud-Slap", "move3_power":20, "move3_pp":10, "move3_damaging":"yes",
+        "move4":"None", "move4_power":0, "move4_pp":0, "move4_damaging":"yes",
+
+        "LEVEL":6,
+    
+        "IVHP":23,
+        "IVATK":16,
+        "IVDefence":13,
+        "IVSpeed":11,
+        "IVSP_ATK":8,
+        "IVSP_DEF":26,
+    
+        "EVHP":1,
+        "EVATK":1,
+        "EVDEF":1,
+        "EVSPEED":1,
+        "EVSP_ATK":1,
+        "EVSP_DEF":1
+}

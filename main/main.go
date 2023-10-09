@@ -5,13 +5,50 @@ import (
 	"encoding/json"
 	"os"
 	"log"
+	"math"
 )
 
 type Pokemon struct {
     NAME    string
-    TYPE   	string
-    HEALTH 	int
-	LEVEL 	int
+	GENDER 	string
+	SPECIES string
+
+	MOVE1	string
+	MOVE1_POWER	float64
+	MOVE1_PP	float64
+	MOVE1_DAMAGEING	string
+	MOVE2	string
+	MOVE2_POWER	float64
+	MOVE2_PP	float64
+	MOVE2_DAMAGEING	string
+	MOVE3	string
+	MOVE3_POWER	float64
+	MOVE3_PP	float64
+	MOVE3_DAMAGEING string
+	MOVE4	string
+	MOVE4_POWER float64
+	MOVE4_PP 	float64
+	MOVE4_DAMAGEING string
+
+	LEVEL 	float64
+	IVHP 	float64
+    IVATK	float64
+    IVDefence	float64
+    IVSpeed	float64
+    IVSP_ATK	float64
+    IVSP_DEF	float64
+
+    EVHP	float64
+    EVATK	float64
+    EVDEF	float64
+    EVSPEED	float64
+    EVSP_ATK	float64
+    EVSP_DEF	float64
+}
+
+func roundFloat(val float64, precision uint) float64 {
+    ratio := math.Pow(10, float64(precision))
+    return math.Round(val*ratio) / ratio
 }
 
 func Main_Menu()(string){
@@ -40,6 +77,7 @@ func About(){
 }
 
 func Battle_Main(){
+	fmt.Print("\033[H\033[2J") 
 	var option string
 	fmt.Println("Battle")
 	fmt.Println("------------------")
@@ -54,8 +92,7 @@ func Battle_Main(){
 
 func Battle_test(){
 	var Pokemon1 Pokemon
-
-	Data, err := os.ReadFile("/workspaces/cli-Pokemon/main/data/1.json")
+	Data, err := os.ReadFile("/workspaces/cli-Pokemon/main/data/test/1.json")
     if err != nil {
         log.Fatal(err)
     }
@@ -68,13 +105,26 @@ func Battle_test(){
         //print error
         log.Fatal(err)
     }
-	fmt.Println(Pokemon1.NAME)
-	fmt.Println(Pokemon1.TYPE)
-	fmt.Println(Pokemon1.HEALTH)
+	var onehund float64 = 0.01
+	var onefourth float64 = 0.25
+	var health float64 = (onehund * (2 * 20 + Pokemon1.IVHP + (onefourth * Pokemon1.EVHP)) * Pokemon1.LEVEL) + Pokemon1.LEVEL + 10
+	
+	var health_bar string = "███████████████"
+	fmt.Print("\033[H\033[2J") 
+	fmt.Println("Name:", Pokemon1.NAME)
+	fmt.Println("Level:", Pokemon1.LEVEL)
+	fmt.Println("Health:", roundFloat(health, 0))
+	fmt.Println(health_bar)
+	fmt.Println("Move 1:", Pokemon1.MOVE1, "| PP:", Pokemon1.MOVE1_PP)
+	fmt.Println("Move 2:", Pokemon1.MOVE2, "| PP:", Pokemon1.MOVE2_PP)
+	fmt.Println("Move 3:", Pokemon1.MOVE3, "| PP:", Pokemon1.MOVE3_PP)
+	fmt.Println("Move 4:", Pokemon1.MOVE4, "| PP:", Pokemon1.MOVE4_PP)
+	
 
 }
 
 func Continue(){
+	fmt.Print("\033[H\033[2J") 
 	fmt.Println("Contiune")
 	fmt.Println("------------------")
 	fmt.Println("Why are you here")
@@ -84,6 +134,7 @@ func Continue(){
 }
 
 func main(){
+	fmt.Print("\033[H\033[2J") 
 	fmt.Println("------------------")
 	option := Main_Menu()
 	switch {
