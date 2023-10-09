@@ -1,8 +1,6 @@
 package main
 
-import "fmt";
-
-
+import ("fmt")
 
 func Main_Menu()(string){
 	var Continue string = "(unavailable)"
@@ -26,10 +24,16 @@ func About(){
 	fmt.Scanln()
 }
 
+func Battle_Main(){
+	fmt.Println("hello world")
+}
+
+
 func Continue(){
 	fmt.Println("Contiune")
 	fmt.Println("------------------")
 	fmt.Println("Why are you here")
+	fmt.Scanln()
 }
 
 func main(){
