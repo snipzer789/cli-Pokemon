@@ -8,6 +8,8 @@ import (
 	"math"
 )
 
+var pokemon_option string = "/workspaces/cli-Pokemon/main/data/test/"
+
 type Pokemon struct {
     NAME    string
 	GENDER 	string
@@ -96,13 +98,23 @@ func Battle_Main(){
 func Battle_test(){
 	var option1, option2 string
 	var Pokemon1 Pokemon
-	Data, err := os.ReadFile("/workspaces/cli-Pokemon/main/data/test/1.json")
-    if err != nil {
+	Pokemons, err := os.ReadDir("/workspaces/cli-Pokemon/main/data/test")
+	if err != nil {
+        log.Fatal(err)
+    }
+
+	// todo FIX THIS 
+	if (pokemon_option == "/workspaces/cli-Pokemon/main/data/test/"){
+		fmt.Printf("/workspaces/cli-Pokemon/main/data/test/%s", Pokemons[0])
+	}
+
+	Pokemon_info, err := os.ReadFile(pokemon_option)
+	if err != nil {
         log.Fatal(err)
     }
 
     // from json format
-    err = json.Unmarshal(Data, &Pokemon1)
+    err = json.Unmarshal(Pokemon_info, &Pokemon1)
  
     if err != nil {
         //if error is not nil
@@ -140,9 +152,16 @@ func Battle_test(){
 			fmt.Println("------------------")
 			fmt.Println("nothing")
 			fmt.Println("------------------")
-			fmt.Scanln()
+			fmt.Scanln(&option2)
 			fmt.Println("------------------")
+		case option1 == "3":
+			fmt.Println("------------------")
+			fmt.Println()
+			fmt.Println("------------------")
+			fmt.Scanln(&option2)
+
 		}
+		
 	
 }
 
