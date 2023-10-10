@@ -6,6 +6,7 @@ import (
 	"os"
 	"log"
 	"math"
+	"regexp"
 )
 
 var pokemon_option string = "/workspaces/cli-Pokemon/main/data/test/"
@@ -102,6 +103,7 @@ func Battle_test(){
 	if err != nil {
         log.Fatal(err)
     }
+
 
 	// todo FIX THIS 
 	if (pokemon_option == "/workspaces/cli-Pokemon/main/data/test/"){
