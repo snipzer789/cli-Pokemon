@@ -86,11 +86,15 @@ func Battle_Main(){
 	fmt.Scanln(&option)
 	fmt.Println("------------------")
 	if(option == "1"){
+		for ok := true; ok; ok = !false {
+			Battle_test()
+		}
 		Battle_test()
 	}
 }
 
 func Battle_test(){
+	var option1, option2 string
 	var Pokemon1 Pokemon
 	Data, err := os.ReadFile("/workspaces/cli-Pokemon/main/data/test/1.json")
     if err != nil {
@@ -115,13 +119,33 @@ func Battle_test(){
 	fmt.Println("Level:", Pokemon1.LEVEL)
 	fmt.Println("Health:", roundFloat(health, 0))
 	fmt.Println(health_bar)
-	fmt.Println("Move 1:", Pokemon1.MOVE1, "| PP:", Pokemon1.MOVE1_PP)
-	fmt.Println("Move 2:", Pokemon1.MOVE2, "| PP:", Pokemon1.MOVE2_PP)
-	fmt.Println("Move 3:", Pokemon1.MOVE3, "| PP:", Pokemon1.MOVE3_PP)
-	fmt.Println("Move 4:", Pokemon1.MOVE4, "| PP:", Pokemon1.MOVE4_PP)
+	fmt.Println("------------------")
+	fmt.Println("1) moves	")
+	fmt.Println("2) items	")
+	fmt.Println("3) pokemon	")
+	fmt.Println("4) run		")
+	fmt.Println("------------------")
+	fmt.Scanln(&option1)
+	switch {
+		case option1 == "1":
+			fmt.Println("------------------")
+			fmt.Println("Move 1:", Pokemon1.MOVE1, "| PP:", Pokemon1.MOVE1_PP)
+			fmt.Println("Move 2:", Pokemon1.MOVE2, "| PP:", Pokemon1.MOVE2_PP)
+			fmt.Println("Move 3:", Pokemon1.MOVE3, "| PP:", Pokemon1.MOVE3_PP)
+			fmt.Println("Move 4:", Pokemon1.MOVE4, "| PP:", Pokemon1.MOVE4_PP)
+			fmt.Println("------------------")
+			fmt.Scanln(&option2)
+			fmt.Println("------------------")
+		case option1 == "2":
+			fmt.Println("------------------")
+			fmt.Println("nothing")
+			fmt.Println("------------------")
+			fmt.Scanln()
+			fmt.Println("------------------")
+		}
 	
-
 }
+
 
 func Continue(){
 	fmt.Print("\033[H\033[2J") 
