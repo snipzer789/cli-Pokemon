@@ -6,7 +6,7 @@ import (
 	"os"
 	"log"
 	"math"
-	"regexp"
+	"strings"
 )
 
 var pokemon_option string = "/workspaces/cli-Pokemon/main/data/test/"
@@ -100,14 +100,22 @@ func Battle_test(){
 	var option1, option2 string
 	var Pokemon1 Pokemon
 	Pokemons, err := os.ReadDir("/workspaces/cli-Pokemon/main/data/test")
+	fmt.Println(Pokemons)
 	if err != nil {
         log.Fatal(err)
     }
+	// fix
+	stringArray := []string {"- 1.json","- 2.json","- 3.json"}
+	justString := strings.Join(stringArray,"¬")
+	PokemonsStrings := strings.Split(justString, "¬")  
 
-
+	for i:=0; i<len(Pokemons) ; i++ {
+    	fmt.Println(PokemonsStrings[i])
+	}
+	
 	// todo FIX THIS 
 	if (pokemon_option == "/workspaces/cli-Pokemon/main/data/test/"){
-		fmt.Printf("/workspaces/cli-Pokemon/main/data/test/%s", Pokemons[0])
+		fmt.Printf("/workspaces/cli-Pokemon/main/data/test/")
 	}
 
 	Pokemon_info, err := os.ReadFile(pokemon_option)
